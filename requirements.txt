@@ -1,0 +1,6 @@
+Flask
+tensorflow
+numpy
+scikit-learn
+wikipedia-api
+librosa

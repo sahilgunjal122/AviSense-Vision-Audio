@@ -1,0 +1,320 @@
+{#<!-- templates/result_audio.html -->#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Audio Prediction Result</title>#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">#}
+{#</head>#}
+{#<body>#}
+{#    <div class="container mt-5">#}
+{#        <h2>Top Prediction</h2>#}
+{#        <div class="card mb-4 p-4">#}
+{#            <h4>{{ top_bird[0] }} - {{ "%.2f"|format(top_bird[1]) }}%</h4>#}
+{#            <img src="{{ top_bird_details.image }}" class="img-fluid" alt="Bird Image" onerror="this.style.display='none'">#}
+{#            <p>{{ top_bird_details.description }}</p>#}
+{#        </div>#}
+{##}
+{#        <h3>Other Predictions</h3>#}
+{#        <ul class="list-group">#}
+{#            {% for bird, probability in top_birds %}#}
+{#                <li class="list-group-item d-flex justify-content-between align-items-center">#}
+{#                    {{ bird }}#}
+{#                    <span class="badge bg-primary rounded-pill">{{ "%.2f"|format(probability) }}%</span>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{##}
+{#        <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Home</a>#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Audio Prediction Result</title>#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <style>#}
+{#        body {#}
+{#            background-color: #f8f9fa;#}
+{#            font-family: 'Arial', sans-serif;#}
+{#        }#}
+{##}
+{#        .container {#}
+{#            margin-top: 50px;#}
+{#        }#}
+{##}
+{#        .card {#}
+{#            border: none;#}
+{#            border-radius: 10px;#}
+{#            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        .card h4 {#}
+{#            font-weight: bold;#}
+{#            color: #2e7d32;#}
+{#        }#}
+{##}
+{#        .card img {#}
+{#            max-width: 150px;#}
+{#            max-height: 150px;#}
+{#            object-fit: cover;#}
+{#            border-radius: 10px;#}
+{#        }#}
+{##}
+{#        .prediction-details {#}
+{#            display: flex;#}
+{#            align-items: center;#}
+{#            gap: 20px;#}
+{#            padding: 20px;#}
+{#        }#}
+{##}
+{#        .prediction-details p {#}
+{#            font-size: 1rem;#}
+{#            color: #6c757d;#}
+{#        }#}
+{##}
+{#        .list-group-item {#}
+{#            border: none;#}
+{#            margin-bottom: 5px;#}
+{#            border-radius: 10px;#}
+{#            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{##}
+{#        .list-group-item strong {#}
+{#            font-size: 1.1rem;#}
+{#        }#}
+{##}
+{#        .btn-secondary {#}
+{#            margin-top: 20px;#}
+{#            background-color: #4caf50;#}
+{#            color: white;#}
+{#            border: none;#}
+{#            border-radius: 5px;#}
+{#            padding: 10px 20px;#}
+{#            transition: background-color 0.3s ease-in-out;#}
+{#        }#}
+{##}
+{#        .btn-secondary:hover {#}
+{#            background-color: #2e7d32;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <div class="container">#}
+{#        <!-- Top Prediction -->#}
+{#        <h2 class="text-center mb-4">Top Prediction</h2>#}
+{#        <div class="card">#}
+{#            <div class="prediction-details">#}
+{#                <!-- Small Bird Image -->#}
+{#                <img src="{{ top_bird_details.image }}" alt="Bird Image" onerror="this.style.display='none'">#}
+{##}
+{#                <!-- Description -->#}
+{#                <div>#}
+{#                    <h4>{{ top_bird[0] }} - {{ "%.2f"|format(top_bird[1]) }}%</h4>#}
+{#                    <p>{{ top_bird_details.description }}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <!-- Other Predictions -->#}
+{#        <h3 class="text-center mt-5">Other Predictions</h3>#}
+{#        <ul class="list-group mt-3">#}
+{#            {% for bird, probability in top_birds %}#}
+{#                <li class="list-group-item d-flex justify-content-between align-items-center">#}
+{#                    <strong>{{ bird }}</strong>#}
+{#                    <span class="badge bg-primary rounded-pill">{{ "%.2f"|format(probability) }}%</span>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{##}
+{#        <!-- Back to Home Button -->#}
+{#        <div class="text-center">#}
+{#            <a href="{{ url_for('index') }}" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Home</a>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f7f9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 900px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .prediction-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .prediction-details img {
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .prediction-details h4 {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .prediction-details p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .list-group-item {
+            border: none;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .list-group-item strong {
+            font-size: 1rem;
+            color: #2e7d32;
+        }
+
+        .badge {
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary {
+            margin-top: 30px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2e7d32;
+        }
+
+        .btn-secondary i {
+            margin-right: 5px;
+        }
+
+        .progress-container {
+            margin-top: 30px;
+        }
+
+        .progress-container h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .progress-bar {
+            background-color: #4caf50 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Prediction -->
+        <h2 class="text-center">Audio Prediction Result</h2>
+        <div class="card mb-4">
+            <div class="prediction-details">
+                <!-- Bird Image -->
+                <img src="{{ top_bird_details.image }}" alt="Bird Image" onerror="this.style.display='none'">
+                <!-- Bird Details -->
+                <div>
+                    <h4>{{ top_bird[0] }} - {{ "%.2f"|format(top_bird[1]) }}%</h4>
+                    <p>{{ top_bird_details.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Predictions -->
+        <h3 class="text-center">Other Predictions</h3>
+        <ul class="list-group mt-3">
+            {% for bird, probability in top_birds %}
+                <li class="list-group-item">
+                    <strong>{{ bird }}</strong>
+                    <span class="badge bg-primary">{{ "%.2f"|format(probability) }}%</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Confidence Progress -->
+        <div class="progress-container">
+            <h4>Prediction Confidence</h4>
+            {% for bird, probability in top_birds %}
+                <div class="d-flex justify-content-between">
+                    <span>{{ bird }}</span>
+                    <span>{{ "%.2f"|format(probability) }}%</span>
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: {{ probability }}%;" aria-valuenow="{{ probability }}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="text-center">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Recognition Result - Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bird Recognition Result - Image</h1>
+        <p>Top Prediction: {{ top_bird[0] }} with accuracy {{ top_bird[1] }}%</p>
+        <div class="result-details">
+            <img src="data:image/png;base64,{{ image_data }}" alt="Uploaded Bird Image">
+            {% if top_bird_details %}
+                <div>
+                    <h2>{{ top_bird_details.title }}</h2>
+                    <p>{{ top_bird_details.description }}</p>
+                    {% if top_bird_details.image %}
+                        <img src="{{ top_bird_details.image }}" alt="Image of {{ top_bird_details.species }}">
+                    {% endif %}
+                </div>
+            {% else %}
+                <p>No additional details available.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('index') }}" class="button">Go Back</a>
+    </div>
+</body>
+</html>
